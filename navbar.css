@@ -1,0 +1,14 @@
+#navbar-js{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    word-wrap: break-word;
+}
+#navbar-js{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.vjs-nav-opt{
+    font-size: 1em;
+    margin: 0 1.5em;
+    cursor: pointer;
+}
