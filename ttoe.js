@@ -16,25 +16,30 @@ class TicTacToe
 
     }
 
-    whoPlays(player_x)
+    whoPlays()
     {
         this.currentPlayer = document.createElement("span")
         this.currentPlayer.id = "current-player"
-        this.currentPlayer.textContent = player_x
+        this.currentPlayer.textContent = "player_x"
         this.container.appendChild(this.currentPlayer)
         // return this.currentPlayer
     }
 
-    updatePlayTour()
+    updatePlayTour(playerInTour)
     {
-        // Here will be updated the current player infos
+        // This basically updates the current player name (in the span)
+
+        if (playerInTour === "player_1"){
+        this.currentPlayer.textContent = "Player 1"
+        }
+        else if (playerInTour === "player_2"){
+            this.currentPlayer.textContent = "Player 2"
+        }
     }
 
     cross(crossOrigin, playerid="player_1")
     {
         this.crossOrigin = crossOrigin
-
-        if(crossOrigin.classList.contains("checked")) {return}
 
         if (playerid === "player_1")
         {
