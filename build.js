@@ -6,10 +6,11 @@ class navbar
         this.code = ""
     }
     
-    loadOptions(optList)
+    loadOptions(optDic)
     {
-        for (let index = 0; index < optList.length; index++) {
-            this.code += `<span class="vjs-nav-opt">${optList[index]}</span>\n`
+        for (let choice in optDic)
+        {
+            this.code += `<a class="vjs-nav-opt" href="${optDic[choice]}">${choice}</a>\n`
         }
 
     }
@@ -82,8 +83,9 @@ class navbar
         })
     }
 
-    autoBar(mode="prepend") // uses all the functions defined up there
+    autoBar(optDic, mode="prepend", ) // uses all the functions defined up there
     {
+        this.loadOptions(optDic)
         this.stacker()
         if (mode === "append") {this.appender()}
         else {this.prepender()}
@@ -120,15 +122,16 @@ class sideBar
         stylize.height = height
     }
 
-    addOptions(optT, optL) // flexible number of optionss
+    addOptions(optionsDict) // flexible number of optionss
     {
-        for (let index = 0; index < optL.length; index++) {
+
+        for (let option in optionsDict){
             let opt = document.createElement("a")
             opt.target = "_blank"
-            opt.innerHTML = optT[index]
-            opt.href = optL[index]
+            opt.innerText = option
+            opt.href =optionsDict[option]
             opt.classList.add("sidebar-opt")
-            this.sideBox.appendChild(opt)
+            this.sideBox.appendChild(opt)            
         }
     }
 

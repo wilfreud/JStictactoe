@@ -16,11 +16,11 @@ class TicTacToe
 
     }
 
-    whoPlays()
+    whoPlays(player_x)
     {
         this.currentPlayer = document.createElement("span")
         this.currentPlayer.id = "current-player"
-        this.currentPlayer.textContent = "Player X"
+        this.currentPlayer.textContent = player_x
         this.container.appendChild(this.currentPlayer)
         // return this.currentPlayer
     }
@@ -34,7 +34,9 @@ class TicTacToe
     {
         this.crossOrigin = crossOrigin
 
-        if (playerid === "player_2")
+        if(crossOrigin.classList.contains("checked")) {return}
+
+        if (playerid === "player_1")
         {
             let cross = document.createElement("div")
             cross.classList.add("cross-mark")
@@ -50,13 +52,12 @@ class TicTacToe
             crossOrigin.appendChild(cross)
         }
 
-        else (playerid === "player_2")
+        else if(playerid === "player_2")
         {
             let circle = document.createElement("div")
             circle.classList.add("cricle-mark")
             this.m_circle = document.createElement("span")
             this.m_circle.classList.add("m-circle")
-
             circle.appendChild(this.m_circle)
             crossOrigin.appendChild(circle)
         }

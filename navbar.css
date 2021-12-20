@@ -10,5 +10,6 @@
 .vjs-nav-opt{
     font-size: 1em;
     margin: 0 1.5em;
-    cursor: pointer;
+    color: wheat;
+    text-decoration: none;
 }
