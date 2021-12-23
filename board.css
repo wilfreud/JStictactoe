@@ -82,3 +82,19 @@
     border-radius: 50%;
     transform: scale(0.8);
 }
+
+/* Buttons for game control */
+#game-controller{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5%;
+}
+.game-btn{
+    width: 7em;
+    font-size: 1em;
+    padding: 10px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    letter-spacing: 2px;
+}

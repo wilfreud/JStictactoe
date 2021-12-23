@@ -12,6 +12,7 @@ var opDic = {
 const nbar = new navbar
 nbar.autoBar(opDic)
 
+
 function init__Game()
 {
     // Invoking board
@@ -45,9 +46,27 @@ function init__Game()
                     ticBoard.updatePlayTour(playerArray[playerArray.length-1])
                 }
             } 
-            console.log(playerArray)
         })
     })
+
+    let restartBtn = document.getElementById("restart-btn")
+    let stopBtn = document.getElementById("stop-btn")
+    
+    let exiter = true // If this variable is false, then the function breaks 
+
+    restartBtn.addEventListener("click", () => {
+        // Find a way to restart
+    })
+
+    await stopBtn.addEventListener("click", () => {
+        // Find a way to delete the object or cancel the function
+        exiter = false
+        console.log(exiter)
+        console.log(typeof exiter)
+    }).then(() => console.log("New value: ", exiter))
+    
+    if (exiter == false){console.log("Exit condition is false"); return }
+    
 
     //End Of main Function
 }

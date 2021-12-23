@@ -20,7 +20,7 @@ class TicTacToe
     {
         this.currentPlayer = document.createElement("span")
         this.currentPlayer.id = "current-player"
-        this.currentPlayer.textContent = "player_x"
+        this.currentPlayer.textContent = ""
         this.container.appendChild(this.currentPlayer)
         // return this.currentPlayer
     }
@@ -74,6 +74,15 @@ class TicTacToe
         this.whoPlays()
         this.container.appendChild(this.Board)
     }
+}
+
+class IOgame
+{
+    constructor()
+    {
+    
+    }
+
 }
 
 export {TicTacToe}
