@@ -58,12 +58,13 @@ function init__Game()
         // Find a way to restart
     })
 
-    await stopBtn.addEventListener("click", () => {
+    stopBtn.addEventListener("click", () => {
         // Find a way to delete the object or cancel the function
         exiter = false
         console.log(exiter)
         console.log(typeof exiter)
-    }).then(() => console.log("New value: ", exiter))
+    })
+    console.log("New value: ", exiter)
     
     if (exiter == false){console.log("Exit condition is false"); return }
     
