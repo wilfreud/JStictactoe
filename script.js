@@ -1,4 +1,4 @@
-import {navbar} from "./build.js"
+import {Navbar} from "./build.js"
 import {TicTacToe} from  "./ttoe.js"
 
 
@@ -9,7 +9,7 @@ var opDic = {
     "Tips" : "#"
 }
 // Invoking mavbar
-const nbar = new navbar
+const nbar = new Navbar
 nbar.autoBar(opDic)
 
 
@@ -24,7 +24,7 @@ function init__Game()
     let firstPlayer = ["player_1", "player_2"][Math.floor(Math.random() * 2)]
     ticBoard.updatePlayTour(firstPlayer)
 
-    let playerArray = [firstPlayer]
+    let playerArray = []
 
     // Adding click event listener on caseboards
     let bardCells = document.querySelectorAll(".caseboard")
@@ -46,27 +46,51 @@ function init__Game()
                     ticBoard.updatePlayTour(playerArray[playerArray.length-1])
                 }
             } 
+
+            console.log(playerArray.length)
+    if (playerArray.length === 9){
+        ticBoard.winnerIs(playerArray[playerArray.length - 2])
+        ticBoard.winbox.addEventListener("click", (event) => {
+            event.stopPropagation()
+            ticBoard.removeWinIs()
         })
+    }
+
+        })
+        
     })
 
     let restartBtn = document.getElementById("restart-btn")
     let stopBtn = document.getElementById("stop-btn")
     
-    let exiter = true // If this variable is false, then the function breaks 
+    let exiter = false // If this variable is false, then the function breaks 
 
     restartBtn.addEventListener("click", () => {
-        // Find a way to restart
+        ticBoard.unload()
+        console.log("Successfully deleted elemets")
+        init__Game()
+        console.log("successfully restarted...");
     })
 
     stopBtn.addEventListener("click", () => {
-        // Find a way to delete the object or cancel the function
-        exiter = false
-        console.log(exiter)
-        console.log(typeof exiter)
+        ticBoard.unload()
+        exiter = true
+        console.log("Successfully ended game"),
+        ticBoard.startGameBtn()
+
+        let startAfterStopBtn = ticBoard.startBtn
+        startAfterStopBtn.addEventListener("click", () => {
+            ticBoard.removeStartBtn()
+            init__Game()
+            console.log("successfully started a new game")
+        })   
     })
-    console.log("New value: ", exiter)
+
     
-    if (exiter == false){console.log("Exit condition is false"); return }
+    console.log(exiter)
+
+    /* Link this event listener and the exit condition with a promise */
+    if (exiter == true){console.log("Exit condition is false"); return }
     
 
     //End Of main Function

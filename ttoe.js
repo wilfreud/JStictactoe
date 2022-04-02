@@ -16,6 +16,14 @@ class TicTacToe
 
     }
 
+    unload()
+    {
+        // Removes game components from html
+        this.container.removeChild(this.Board)
+        this.container.removeChild(this.currentPlayer)
+        document.body.removeChild(this.gameController)
+    }
+
     whoPlays()
     {
         this.currentPlayer = document.createElement("span")
@@ -23,6 +31,29 @@ class TicTacToe
         this.currentPlayer.textContent = ""
         this.container.appendChild(this.currentPlayer)
         // return this.currentPlayer
+    }
+
+    gameBtns()
+    {
+        this.gameController = document.createElement("div")
+        this.gameController.id = "game-controller"
+        this.gameController.innerHTML = `<button id="restart-btn" class="game-btn">Restart</button>
+        <button id="stop-btn" class="game-btn">Stop</button>`
+        document.body.appendChild(this.gameController)
+    }
+
+    startGameBtn()
+    {
+        this.startBtn = document.createElement("button")
+        this.startBtn.id = "start-btn"
+        this.startBtn.classList.add("game-btn")
+        this.startBtn.textContent = "Start Game"
+        this.container.appendChild(this.startBtn)
+    }
+
+    removeStartBtn()
+    {
+        this.container.removeChild(this.startBtn)
     }
 
     updatePlayTour(playerInTour)
@@ -35,6 +66,41 @@ class TicTacToe
         else if (playerInTour === "player_2"){
             this.currentPlayer.textContent = "Player 2"
         }
+    }
+
+    winnerIs(winner)
+    {
+        this.winbox = document.createElement("div")
+        this.winbox.id = "winner-box"
+
+        this.winpop = document.createElement("div")
+        this.winpop.id = "winpop"
+       
+        this.winpopText = document.createElement("p")
+        this.winpopText.id = "winpop-text"
+        this.winpopText.innerHTML = `Winner: <span class="winner-name">${(winner === "player_1")?"Player 1":"Player 2"}</span>`
+    
+        this.winpopBtn = document.createElement("button")
+        this.winpopBtn.id = "winpop-btn"
+        this.winpopBtn.classList.add("game-btn")
+        this.winpopBtn.textContent = "Close"
+
+        this.winpop.appendChild(this.winpopText)
+        this.winpop.appendChild(this.winpopBtn)
+        this.winbox.appendChild(this.winpop)
+        document.body.prepend(this.winbox)
+
+        if (document.body.contains(this.winbox)) {
+            this.container.classList.add("is-blured-due-to-popup")
+            this.gameController.classList.add("is-blured-due-to-popup")
+        }
+    }
+
+    removeWinIs()
+    {
+        document.body.removeChild(this.winbox)
+        this.container.classList.remove("is-blured-due-to-popup")
+        this.gameController.classList.remove("is-blured-due-to-popup")
     }
 
     cross(crossOrigin, playerid="player_1")
@@ -73,16 +139,8 @@ class TicTacToe
     {
         this.whoPlays()
         this.container.appendChild(this.Board)
+        this.gameBtns()
     }
-}
-
-class IOgame
-{
-    constructor()
-    {
-    
-    }
-
 }
 
 export {TicTacToe}

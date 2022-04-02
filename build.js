@@ -1,6 +1,6 @@
-class navbar
+class Navbar
 {
-    constructor(opList, inbgColor="#0000003f")
+    constructor(inbgColor="#0000003f")
     {
         this.bgColor = inbgColor
         this.code = ""
@@ -9,12 +9,9 @@ class navbar
     loadOptions(optDic)
     {
         for (let choice in optDic)
-        {
             this.code += `<a class="vjs-nav-opt" href="${optDic[choice]}">${choice}</a>\n`
-        }
-
     }
-    stacker() // injects html code
+    stacker() // injects html code for navbar
     {
         this.navBox = document.createElement("header")
         this.navBox.id = "navbar-js"
@@ -59,9 +56,9 @@ class navbar
     {
         // Hide or show sidebar on click
         document.getElementById("show-sidebar").addEventListener("click", () => {
-            
             let displayMenu = document.getElementById("sidebar")
-            var classGroup = displayMenu.classList
+            console.log(displayMenu);
+            let classGroup = displayMenu.classList
             let rotateBtn = document.getElementById("show-sidebar")
 
             if (classGroup[classGroup.length -1] === "visible") {
@@ -95,7 +92,7 @@ class navbar
     }
 }
 
-class sideBar
+class Sidebar
 {
     constructor(side="right")
     {
@@ -103,7 +100,7 @@ class sideBar
         this.sideBox = document.createElement("div")
         this.sideBoxCode = 
         `<div>
-            <div id="sidebar-head">
+            <div>
                 <span id="close">X</span>
             </div>
         </div>
@@ -142,4 +139,4 @@ class sideBar
     }
 }
 
-export {navbar, sideBar}
+export {Navbar, Sidebar}
